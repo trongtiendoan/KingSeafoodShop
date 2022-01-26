@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>KINGSEAFOOD - Admin Dashboard</title>
+<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
+	name='viewport' />
+<link rel="icon" href="../../../assets/img/icon.ico" type="image/x-icon" />
+<!-- 
+	<!-- Fonts and icons -->
+<script src="../../../assets/js/plugin/webfont/webfont.min.js"></script>
+<script>
+	WebFont.load({
+		google : {
+			"families" : [ "Lato:300,400,700,900" ]
+		},
+		custom : {
+			"families" : [ "Flaticon", "Font Awesome 5 Solid",
+					"Font Awesome 5 Regular", "Font Awesome 5 Brands",
+					"simple-line-icons" ],
+			urls : [ '../../../assets/css/fonts.min.css' ]
+		},
+		active : function() {
+			sessionStorage.fonts = true;
+		}
+	});
+</script>
+<!-- CSS Files -->
+<link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../assets/css/atlantis.min.css">
+<link rel="stylesheet" href="../../../assets/css/demo.css">
+</head>
+<body>
+	<div class="wrapper">
+		<!-- Header -->
+
+		<th:block th:replace="~{admin/fragments/header :: header}"></th:block>
+
+		<!-- End Header -->
+
+		<!-- Navbar -->
+
+		<th:block th:replace="~{admin/fragments/navbar :: navbar}"></th:block>
+
+		<!-- End Navbar -->
+		<div class="main-panel" style="margin-top: 50px">
+			<div class="content">
+				<div class="page-inner">
+				<h5 class="mt-4">
+							<a th:href="@{/admin/orders}"><i class="fa fa-arrow-left"></i>Trở Lại</a>
+						</h5>
+				<div class="page-header">
+				
+					<h4 class="page-title">Đơn hàng chi tiết</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home">
+							<a href="#">
+								<i class="flaticon-home"></i>
+							</a>
+						</li>
+						<li class="separator">
+							<i class="flaticon-right-arrow"></i>
+						</li>
+						<li class="nav-item">
+							<a href="#">Trang chủ</a>
+						</li>
+						<li class="separator">
+							<i class="flaticon-right-arrow"></i>
+						</li>
+						<li class="nav-item">
+							<a href="#">Đơn hàng chi tiết</a>
+						</li>
+					</ul>
+				</div>
+					<div class="col-md-12">
+													<div class="row m-5" th:each="item, count : ${order}">
+														<div class="m-6 mt-10">
+															<h6><b>- Họ và tên người nhận hàng : </b>
+																[[${item.receiver}]]</h6>
+															<h6>
+																<b>- Số điện thoại :</b> [[${item.phone}]]
+															</h6>
+															<h6>
+																<b>- Địa chỉ giao hàng :</b> [[${item.address}]]
+															</h6>
+															<h6>
+																<b>- Ngày đặt hàng :</b> [[${item.orderDate}]]
+															</h6>
+															<h6>
+																<b>- Ghi chú :</b> [[${item.description}]]
+															</h6>
+															<br>
+<h6>
+															<b>Thông tin đơn hàng 
+														</h6>
+														</div>
+
+														
+													</div>
+													<table class="table table-bordered">
+														<thead>
+															<tr class="text-center">
+																<th width="8%">STT</th>
+																<th>Tên sản phẩm</th>
+																<th>Số lượng</th>
+																<th>Giảm giá</th>
+																<th>Đơn giá sản phẩm (Giá gốc)</th>
+
+															</tr>
+														</thead>
+														<tbody>
+															<tr th:each="item, count : ${orderDetail}">
+																<td class="text-center" th:text="${count.index+1}"></td>
+																<td th:text="${item.product.name}"></td>
+																<td class="text-center" th:text="${item.quantity}"></td>
+																<td class="text-center"
+																	th:text="${#numbers.formatDecimal(item.product.discount, 1, 'DEFAULT', 0, 'DEFAULT')}+'%'"></td>
+																<td class="text-center"
+																	th:text="${#numbers.formatDecimal(item.price, 1, 'DEFAULT', 0, 'DEFAULT')}+'.000 VNĐ'"></td>
+															</tr>
+														</tbody>
+													</table>
+
+													<p style="text-align: center;">------------------------------------------------------------------
+													</p>
+
+													<div class="row" th:each="item, count : ${order02}">
+														<h2 class="col-lg-12 " style="text-align: right;">
+															<b style="font-size: 20px">Tổng Tiền Thanh Toán : </b>
+															[[${item.totalPrice}+'00 VND']]
+														</h2>
+														<br>
+
+													</div>
+
+												</div>
+
+					</div>
+					<footer class="footer">
+						<div class="container-fluid">
+							<nav class="pull-left">
+								<ul class="nav">
+									<li class="nav-item"><a class="nav-link" href="#">
+											King-Seafood </a></li>
+									<li class="nav-item"><a class="nav-link" href="#">
+											Help </a></li>
+									<li class="nav-item"><a class="nav-link" href="#">
+											Licenses </a></li>
+								</ul>
+							</nav>
+							<div class="copyright ml-auto">
+								2021, made with <i class="fa fa-heart heart text-danger"></i> by
+								<a href="#">King-Seafood</a>
+							</div>
+						</div>
+					</footer>
+				</div>
+			</div>
+			</div>
+			<script src="../../../assets/js/core/jquery.3.2.1.min.js"></script>
+			<script src="../../../assets/js/core/popper.min.js"></script>
+			<script src="../../../assets/js/core/bootstrap.min.js"></script>
+			<!-- jQuery UI -->
+			<script
+				src="../../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+			<script
+				src="../../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+			<!-- jQuery Scrollbar -->
+			<script
+				src="../../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+			<!-- Datatables -->
+			<script src="../../../assets/js/plugin/datatables/datatables.min.js"></script>
+			<!-- Atlantis JS -->
+			<script src="../../../assets/js/atlantis.min.js"></script>
+			<!-- Atlantis DEMO methods, don't include it in your project! -->
+			<script src="../../../assets/js/setting-demo2.js"></script>
+</html>

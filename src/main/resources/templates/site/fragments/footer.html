@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:fragment= "footer">
+	<footer>
+    <div class="container"> 
+      
+      <!-- ABOUT Location -->
+      <div class="col-md-3">
+        <div class="about-footer"> <img class="margin-bottom-30" src="images/logo.jpg" alt="" >
+          <p><i class="icon-pointer"></i> Phạm Văn đồng, P25, Bình Thạnh <br>
+            TP Hồ Chí Minh, VN.</p>
+          <p><i class="icon-call-end"></i> 0945696832</p>
+          <p><i class="icon-envelope"></i> VuaHaiSan2021@gmail.com</p>
+        </div>
+      </div>
+      
+      <!-- HELPFUL LINKS -->
+      <div class="col-md-3">
+        <h6>MỤC HỮU ÍCH</h6>
+        <ul class="link">
+          <li><a th:href="@{/products}"> Các sản phẩm</a></li>
+          <li><a href="#."> Hướng dẫn đặt hàng</a></li>         
+          <li><a href="#."> Cách thức thanh toán</a></li>
+          <li><a href="#."> Dịch vụ vận chuyển</a></li>
+          <li><a th:href=@{/contact}> Liên hệ</a></li>
+          <li><a href="#."> Trung tâm hỗ trợ</a></li>
+          <li><a href="#."> Chính sách đổi trả hàng</a></li>
+        </ul>
+      </div>
+      
+      <!-- SHOP -->
+      <div class="col-md-3">
+        <h6>VỀ KING SEAFOOD</h6>
+        <ul class="link">
+          <li><a th:href="@{/aboutUs}"> Giới thiệu về chúng tôi</a></li>
+          <li><a href="#."> Điều khoản sử dụng</a></li>
+          <li><a href="#."> Chính sách bảo mật</a></li>
+          <li><a href="#."> Tuyển dụng</a></li>
+          <li><a href="#."> Báo chí</a></li>
+        </ul>
+      </div>
+      
+      <!-- MY ACCOUNT -->
+      <div class="col-md-3">
+        <h6>TÀI KHOẢN</h6>
+        <ul class="link">
+        <th:block th:unless="${#request.remoteUser}">
+          <li><a th:href="@{/login}"> Đăng nhập</a></li>
+          <li><a th:href="@{/registered}"> Đăng ký</a></li>
+       	</th:block>
+       	<th:block th:if="${#request.remoteUser}">
+       	  <li><a th:href="@{/logout}">Đăng xuất</a></li>
+          <li><a th:href="@{/customer/info}"> Thông tin khách hàng</a></li>
+       	</th:block>
+       	  <li><a th:href="@{/cartItem}"> Giỏ hàng của tôi</a></li>
+          <li><a href="#."> Danh sách ước</a></li>
+          <li><a href="#."> Thanh toán</a></li>
+        </ul>
+      </div>
+      
+      <!-- Rights -->
+      
+      <div class="rights">
+        <p>©  2021 KING SEAFOOD All right reserved. </p>
+        <div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
+      </div>
+    </div>
+  </footer>
+ </th:block>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>King Seafood - Chi tiết đơn hàng</title>
+
+
+<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+<link rel="stylesheet" type="text/css"
+	href="../../rs-plugin/css/settings.css" media="screen" />
+
+<!-- Bootstrap Core CSS -->
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../../css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+<link href="../../css/ionicons.min.css" rel="stylesheet">
+<link href="../../css/main.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
+<link href="../../css/responsive.css" rel="stylesheet">
+
+<!-- JavaScripts -->
+<script src="../../js/modernizr.js"></script>
+
+<!-- Online Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900'
+	rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+	<!-- LOADER -->
+
+
+	<!-- Wrap -->
+	<div id="wrap">
+
+		<!-- header -->
+		<header th:replace="~{/site/fragments/header :: header}"></header>
+
+		<!--======= SUB BANNER =========-->
+		<section class="sub-bnr" data-stellar-background-ratio="0.5">
+			<div class="position-center-center">
+				<div class="container">
+					<h4>CHI TIẾT ĐƠN HÀNG</h4>
+					<p>Hệ thống bán hải sản King Seafood</p>
+					<ol class="breadcrumb">
+						<li><a th:href=@{/}>Trang chủ</a></li>
+						<li class="active">Chi tiết đơn hàng</li>
+					</ol>
+				</div>
+			</div>
+		</section>
+
+		<!-- Content -->
+		<div id="content">
+
+			<!--======= CONATACT  =========-->
+			<section class="chart-page padding-top-100 padding-bottom-100">
+				<div class="container">
+
+					<!-- Payments Steps -->
+					<div>
+
+						<!-- SHOPPING INFORMATION -->
+						<div>
+							<div class="row">
+
+								<!-- ESTIMATE SHIPPING & TAX -->
+								<div class="main-panel">
+									<div class="content">
+										<div class="page-inner">
+											<div class="col-md-12">
+												<h5 class="mt-4">
+													<a th:href="@{/customer/info}"><i
+														class="fa fa-arrow-left"></i> Trở lại</a>
+												</h5>
+												<div class="row m-5 ">
+													<div class="row m-5" th:each="item, count : ${order}">
+														<div class="m-6 mt-10">
+															<h6>- Họ và tên người nhận hàng :
+																[[${item.receiver}]]</h6>
+															<h6>
+																<b>- Số điện thoại :</b> [[${item.phone}]]
+															</h6>
+															<h6>
+																<b>- Địa chỉ giao hàng :</b> [[${item.address}]]
+															</h6>
+															<h6>
+<b>- Ngày đặt hàng :</b> [[${item.orderDate}]]
+															</h6>
+															<h6>
+																<b>- Ghi chú :</b> [[${item.description}]]
+															</h6>
+															<br>
+
+														</div>
+
+														<h6>
+															<b>Thông tin đơn hàng 
+														</h6>
+													</div>
+													<table class="table table-bordered">
+														<thead>
+															<tr class="text-center">
+																<th width="8%">STT</th>
+																<th>Tên sản phẩm</th>
+																<th>Số lượng</th>
+																<th>Giảm giá</th>
+																<th>Đơn giá (Giá chưa giảm)</th>
+
+															</tr>
+														</thead>
+														<tbody>
+															<tr th:each="item, count : ${orderDetail}">
+																<td class="text-center" th:text="${count.index+1}"></td>
+																<td th:text="${item.product.name}"></td>
+																<td class="text-center" th:text="${item.quantity}"></td>
+																<td class="text-center"
+																	th:text="${#numbers.formatDecimal(item.product.discount, 1, 'DEFAULT', 0, 'DEFAULT')}+'%'"></td>
+																<td class="text-center"
+																	th:text="${#numbers.formatDecimal(item.price, 1, 'DEFAULT', 0, 'DEFAULT')}+'.000 VNĐ'"></td>
+															</tr>
+														</tbody>
+													</table>
+
+													<p style="text-align: center;">------------------------------------------------------------------
+													</p>
+
+													<div class="row" th:each="item, count : ${order02}">
+														<h2 class="col-lg-12 " style="text-align: right;">
+															<b style="font-size: 20px">Tổng Tiền Thanh Toán : </b>
+															[[${item.totalPrice}+'00 VND']]
+														</h2>
+														<br>
+
+													</div>
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			</section>
+
+			<!--======= MAP =========-->
+
+
+			<!-- News Letter -->
+
+		</div>
+
+		<!--======= FOOTER =========-->
+		<footer th:replace="~{/site/fragments/footer :: footer}"></footer>
+	</div>
+	<script src="../../js/jquery-1.11.3.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/own-menu.js"></script>
+	<script src="../../js/jquery.lighter.js"></script>
+	<script src="../../js/owl.carousel.min.js"></script>
+
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript"
+		src="../../rs-plugin/js/jquery.tp.t.min.js"></script>
+	<script type="text/javascript"
+		src="../../rs-plugin/js/jquery.tp.min.js"></script>
+	<script src="../js/main.js"></script>
+
+
+</body>
+</html>

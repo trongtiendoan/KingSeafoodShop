@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>King Seafood - Đặt hàng</title>
+
+<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/ionicons.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<!-- JavaScripts -->
+<script src="js/modernizr.js"></script>
+
+<!-- Online Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  <!-- header -->
+  <header th:replace="~{/site/fragments/header :: header}"></header>
+  
+  <!--======= SUB BANNER =========-->
+  <section class="sub-bnr" data-stellar-background-ratio="0.5">
+    <div class="position-center-center">
+      <div class="container">
+        <h4>ĐẶT HÀNG</h4>
+        <p>Hệ thống bán hải sản King Seafood</p>
+        <ol class="breadcrumb">
+          <li><a th:href=@{/}>Trang chủ</a></li>
+          <li class="active">Đặt hàng</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!--======= PAGES INNER =========-->
+    <section class="chart-page padding-top-100 padding-bottom-100">
+      <div class="container"> 
+        
+        <!-- Payments Steps -->
+        <div class="shopping-cart"> 
+          
+          <!-- SHOPPING INFORMATION -->
+          <div class="cart-ship-info">
+            <div class="row"> 
+              
+              <!-- ESTIMATE SHIPPING & TAX -->
+              <div class="col-sm-7">
+                               
+                <!-- SHIPPING info -->
+                <h6 class="margin-top-50">Thông tin nhận hàng</h6>
+                <form th:action="@{/checkOut}" th:object="${order}" method="post">
+                  <ul class="row">
+                    
+                    <!-- Name -->
+                    <li class="col-md-6">
+                      <label> *HỌ VÀ TÊN
+                        <input th:field="*{receiver}" type="text" name="first-name" value="" placeholder="Họ và tên..." required="required">
+                      </label>
+                    </li>
+                    <!-- LAST NAME -->
+                    <li class="col-md-6">
+                      <label> *ĐỊA CHỈ
+                        <input th:field="*{address}" type="text" name="last-name" value="" placeholder="Địa chỉ..." required="required">
+                      </label>
+                    </li>
+                    <li class="col-md-6"> 
+                      <!-- COMPANY NAME -->
+                      <label> *SỐ ĐIỆN THOẠI
+                        <input th:field="*{phone}" type="text" name="company" value="" placeholder="SĐT..." required="required">
+                      </label>
+                    </li>
+                    <li class="col-md-6"> 
+                      <!-- ADDRESS -->
+                      <label> CHÚ THÍCH
+                        <input th:field="*{description}" type="text" name="address" value="" placeholder="Chú thích...">
+                      </label>
+                    </li>
+                    
+                    <!-- PHONE -->
+                    <li class="col-md-6">
+                      <button type="submit" class="btn">XÁC NHẬN ĐẶT HÀNG</button>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+              
+              <!-- SUB TOTAL -->
+              <div class="col-sm-5">
+                <h6>ĐƠN HÀNG CỦA BẠN</h6>
+                <div class="order-place">
+                  <div class="order-detail" th:each="item : ${cartItems}">
+                    <p>[[${item.product.name}]]
+	                    <span>
+	                    	[[${#numbers.formatDecimal((item.product.price - (item.product.price * item.product.discount/100)) * item.quantity, 1, 'DEFAULT', 0, 'DEFAULT')}]].000 VNĐ
+	                    </span>
+                    </p>
+                  </div>
+                  <!-- SUB TOTAL -->
+                  <p class="all-total" style="color: black;">TỔNG CỘNG <span style="float: right;"> [[${#numbers.formatDecimal(totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}]].000 VNĐ</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About -->
+    <section class="small-about padding-top-150 padding-bottom-150">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>VỀ CHÚNG TÔI</h4>
+          <p>Chúng tôi tự hào mình là nhà cung cấp hải sản tươi sống chất lượng đến cho mọi nhà, với phương châm chất lượng là danh dự đến từ doanh nghiệp 
+          chúng tôi tự tin sẽ làm hài lòng quý khách hàng một cách tận tình nhất </p>
+        </div>
+        
+        <!-- Social Icons -->
+        <ul class="social_icons">
+          <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+          <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+          <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+          <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+          <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- News Letter -->
+    <section class="news-letter padding-top-150 padding-bottom-150">
+      <div class="container">
+        <div class="heading light-head text-center margin-bottom-30">
+          <h4>Liên hệ</h4>
+          <span>Bằng cách điền email của bạn vào đây chúng tôi sẽ liên hệ qua mail nhanh nhất có thể. Trân trọng!  </span> </div>
+        <form>
+          <input type="email" placeholder="Nhập địa chỉ email..." required>
+          <button type="submit">Gửi</button>
+        </form>
+      </div>
+    </section>
+  </div>
+  
+  <!--======= FOOTER =========-->
+  <footer th:replace="~{/site/fragments/footer :: footer}"></footer>
+  
+  <!--======= RIGHTS =========--> 
+  
+</div>
+<script src="js/jquery-1.11.3.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/own-menu.js"></script> 
+<script src="js/jquery.lighter.js"></script> 
+<script src="js/owl.carousel.min.js"></script> 
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script> 
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script> 
+<script src="js/main.js"></script> 
+<script src="js/main.js"></script>
+</body>
+</html>

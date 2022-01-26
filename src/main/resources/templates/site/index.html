@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>KING SEAFOOD</title>
+
+<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/ionicons.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<!-- JavaScripts -->
+<script src="js/modernizr.js"></script>
+
+<!-- Online Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  <!-- header -->
+  <header th:replace="~{/site/fragments/header :: header}"></header>
+  
+  <!--======= HOME MAIN SLIDER =========-->
+  <section class="home-slider"> 
+    
+    <!-- SLIDE Start -->
+    <div class="tp-banner-container">
+      <div class="tp-banner">
+        <ul>
+          <!-- SLIDE  -->
+          <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
+            <!-- MAIN IMAGE --> 
+            <img src="images/slide1.jpg"  alt="slider"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+            <!-- LAYERS --> 
+            <!-- LAYER NR. 1 -->
+            <div class="tp-caption font-playfair sfb tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="-200" 
+                data-speed="800" 
+                data-start="500" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 7; font-size:18px; color:#fff; max-width: auto; text-shadow: black 0.1em 0.1em 0.2em; max-height: auto; white-space: nowrap;">King Seafood chất lượng hàng đầu</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfl font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="-120" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:80px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;"> 299.000 <small class="font-regular">VNĐ</small></div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="0" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">Hải sản</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="110" 
+                data-speed="800" 
+                data-start="1300" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:120px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">tươi sống</div>
+            <!-- LAYER NR. 4 -->
+            <div class="tp-caption lfb tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="240" 
+                data-speed="800" 
+                data-start="2200" 
+                data-easing="Power3.easeInOut" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                data-scrolloffset="0"
+                style="z-index: 8;"><a th:href="@{/products}" class="btn">MUA NGAY</a> </div>
+          </li>
+          
+          <!-- SLIDE  -->
+          <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
+            <!-- MAIN IMAGE --> 
+            <img src="images/slide6.jpg"  alt="slider"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+            <!-- LAYERS --> 
+            <!-- LAYER NR. 1 -->
+            <div class="tp-caption font-playfair sfb tp-resizeme" 
+                data-x="center" data-hoffset="0" 
+                data-y="center" data-voffset="-150" 
+                data-speed="800" 
+                data-start="500" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">Vua hải sản đứng đầu mọi nhãn hàng</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-regular tp-resizeme letter-space-4" 
+                data-x="center" data-hoffset="0" 
+                data-y="center" data-voffset="-50" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:78px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">Chất lượng hàng đầu</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" 
+                data-x="center" data-hoffset="0" 
+                data-y="center" data-voffset="60" 
+                data-speed="800" 
+                data-start="1300" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:140px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">King Seafood</div>
+            <!-- LAYER NR. 4 -->
+            <div class="tp-caption sfb font-extra-bold tp-resizeme" 
+                data-x="center" data-hoffset="120"
+                data-y="center" data-voffset="200"
+                data-speed="800" 
+                data-start="2200" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; margin-left:50px ; font-size:60px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;"> 299.000 <small class="font-regular">VNĐ</small></div>
+            <!-- LAYER NR. 4 -->
+            <div class="tp-caption lfb tp-scrollbelowslider tp-resizeme" 
+                data-x="center" data-hoffset="-120" 
+                data-y="center" data-voffset="200" 
+                data-speed="800" 
+                data-start="2200" 
+                data-easing="Power3.easeInOut" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                data-scrolloffset="0"
+                style="z-index: 8; margin-right:50px;"><a th:href="@{/products}" class="btn">MUA NGAY</a> </div>
+          </li>
+          
+          <!-- SLIDE -->
+          <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
+            <!-- MAIN IMAGE --> 
+            <img src="images/slide4.jpg"  alt="slider"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+            <!-- LAYERS --> 
+            <!-- LAYER NR. 1 -->
+            <div class="tp-caption font-playfair sfb tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="-200" 
+                data-speed="800" 
+                data-start="500" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 7; font-size:18px; color:#fff; max-width: auto; text-shadow: black 0.1em 0.1em 0.2em; max-height: auto; white-space: nowrap;">King Seafood chất lượng hàng đầu</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfl font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="-120" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:80px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;"> 299.000 <small class="font-regular">VNĐ</small></div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="0" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">Hải sản</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="110" 
+                data-speed="800" 
+                data-start="1300" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:120px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">tươi sống</div>
+            <!-- LAYER NR. 4 -->
+            <div class="tp-caption lfb tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="240" 
+                data-speed="800" 
+                data-start="2200" 
+                data-easing="Power3.easeInOut" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                data-scrolloffset="0"
+                style="z-index: 8;"><a th:href="@{/products}" class="btn">MUA NGAY</a> </div>
+          </li>
+          
+          <!-- SLIDE  -->
+          <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
+            <!-- MAIN IMAGE --> 
+            <img src="images/slide5.jpg"  alt="slider"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+            <!-- LAYERS --> 
+            <!-- LAYER NR. 1 -->
+            <div class="tp-caption font-playfair sfb tp-resizeme" 
+                data-x="center" data-hoffset="0" 
+                data-y="center" data-voffset="-150" 
+                data-speed="800" 
+                data-start="500" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">Vua hải sản đứng đầu mọi nhãn hàng</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-regular tp-resizeme letter-space-4" 
+                data-x="center" data-hoffset="0" 
+                data-y="center" data-voffset="-50" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:78px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">Chất lượng hàng đầu</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme letter-space-4" 
+                data-x="center" data-hoffset="0" 
+                data-y="center" data-voffset="60" 
+                data-speed="800" 
+                data-start="1300" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:140px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">King Seafood</div>
+            <!-- LAYER NR. 4 -->
+            <div class="tp-caption sfb font-extra-bold tp-resizeme" 
+                data-x="center" data-hoffset="120"
+                data-y="center" data-voffset="200"
+                data-speed="800" 
+                data-start="2200" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; margin-left:50px ; font-size:60px; color:#fff; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;"> 299.000 <small class="font-regular">VNĐ</small></div>
+            <!-- LAYER NR. 4 -->
+            <div class="tp-caption lfb tp-scrollbelowslider tp-resizeme" 
+                data-x="center" data-hoffset="-120" 
+                data-y="center" data-voffset="200" 
+                data-speed="800" 
+                data-start="2200" 
+                data-easing="Power3.easeInOut" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                data-scrolloffset="0"
+                style="z-index: 8; margin-right:50px;"><a th:href="@{/products}" class="btn">MUA NGAY</a> </div>
+          </li>
+          
+          <!-- SLIDE -->
+          <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
+            <!-- MAIN IMAGE --> 
+            <img src="images/slide3.jpg"  alt="slider"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+            <!-- LAYERS --> 
+            <!-- LAYER NR. 1 -->
+            <div class="tp-caption font-playfair sfb tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="-200" 
+                data-speed="800" 
+                data-start="500" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 7; font-size:18px; color:black; max-width: auto; text-shadow: black 0.1em 0.1em 0.2em; max-height: auto; white-space: nowrap;">King Seafood chất lượng hàng đầu</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfl font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="-120" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:80px; color:black; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;"> 299.000 <small class="font-regular">VNĐ</small></div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="0" 
+                data-speed="800" 
+                data-start="800" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:100px; color:black; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">Hải sản</div>
+            <!-- LAYER NR. 2 -->
+            <div class="tp-caption sfr font-extra-bold tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="110" 
+                data-speed="800" 
+                data-start="1300" 
+                data-easing="Power3.easeInOut" 
+                data-splitin="chars" 
+                data-splitout="none" 
+                data-elementdelay="0.07" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                style="z-index: 6; font-size:120px; color:black; text-transform:uppercase; text-shadow: black 0.1em 0.1em 0.2em; white-space: nowrap;">tươi sống</div>
+            <!-- LAYER NR. 4 -->
+            <div class="tp-caption lfb tp-resizeme" 
+                data-x="left" data-hoffset="0" 
+                data-y="center" data-voffset="240" 
+                data-speed="800" 
+                data-start="2200" 
+                data-easing="Power3.easeInOut" 
+                data-elementdelay="0.1" 
+                data-endelementdelay="0.1" 
+                data-endspeed="300" 
+                data-scrolloffset="0"
+                style="z-index: 8;"><a th:href="@{/products}" class="btn">MUA NGAY</a> </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!-- New Arrival -->
+    <section class="padding-top-100 padding-bottom-100">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>Hải sản nổi bật</h4>
+          <span>Hãy đến với hệ thống phân phối hải sản King Seafood, với nguồn hải sản chất lượng đến từ nguồn cung cấp tươi sống mỗi ngày,
+          Chất lượng là niềm tự hào của chúng tôi.</span> </div>
+      </div>
+      
+      <!-- New Arrival -->
+      <div class="arrival-block"> 
+        
+        <!-- Item -->
+        <div class="item" th:each="item : ${listProduct8}"> 
+          <!-- Images --> 
+          <img class="img-1" th:src="@{'/loadImage?imageName='+${item.image}}" alt="">
+          <img class="img-2" th:src="@{'/loadImage?imageName='+${item.image}}" alt=""> 
+          <!-- Overlay  -->
+          <div class="overlay"> 
+            <!-- Price --> 
+            <span class="price">[[${#numbers.formatDecimal(item.price - (item.price * item.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')}]].000<small>VNĐ</small></span>
+            <div class="position-center-center">
+	            <a th:href="@{'/loadImage?imageName='+${item.image}}" data-lighter data-toggle="tooltip" title="Chi tiết">
+	            	<i class="icon-magnifier"></i>
+	            </a>
+	            <a th:href="@{/addToCart(productId=${item.productId})}" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng">
+                  	<i class="icon-basket"></i>
+                 </a>
+            </div>
+          </div>
+          <!-- Item Name -->
+          <div class="item-name">
+          	<a th:href="@{/productDetail(id=${item.productId})}">[[${item.name}]]</a>
+            <!-- <p>Hệ thống Vua Hải Sản</p>  -->
+          </div>
+        </div>
+      </div>
+      <img alt="" src="img/Banner01.PNG" style="width: 100%; height: 100%; margin-top: 3%">
+    </section>
+    <!-- PHẦN ĐẠT UPDATE MỚI CHO GAO DIỆN INDEX -->
+    
+    <!-- PHẦN ĐẠT UPDATE MỚI CHO GAO DIỆN INDEX -->
+    <!-- Popular Products -->
+    <section class="padding-top-20 padding-bottom-80">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>Top sản phẩm đang bán chạy</h4>
+          <span>Chất lượng hải sản hàng đầu là niềm tự hào của chúng tôi khi phục vụ quý khách hàng</span> </div>
+        
+        <!-- Popular Item Slide -->
+        <div class="papular-block block-slide"> 
+          
+          <!-- Item -->
+          <div class="item" th:each="item : ${topOrderList}"> 
+            <!-- Item img -->
+            <div class="item-img">
+	            <img class="img-1" th:src="@{'/loadImage?imageName='+${item[1]}}" alt="" >
+	            <img class="img-2" th:src="@{'/loadImage?imageName='+${item[1]}}" alt="" > 
+              <!-- Overlay -->
+              <div class="overlay">
+                <div class="position-center-center">
+                  <div class="inn">
+                  <a th:href="@{'/loadImage?imageName='+${item[1]}}" data-lighter data-toggle="tooltip" data-placement="top" title="Chi tiết">
+                  	<i class="icon-magnifier"></i>
+                  </a>
+                  <a th:href="@{/addToCart(productId=${item[2]})}" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng">
+                  	<i class="icon-basket"></i>
+                  </a>
+                  <a href="#." data-toggle="tooltip" data-placement="top" title="Thêm vào Danh sách yêu thích">
+                  	<i class="icon-heart"></i>
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item Name -->
+            <div class="item-name">
+              <a href="#.">[[${item[0]}]]</a>
+            </div>
+            <!-- Price --> 
+            <span class="price">[[${#numbers.formatDecimal(item[4] - (item[4] * item[5]/100), 1, 'DEFAULT', 0, 'DEFAULT')}]].000<small>VNĐ</small></span>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <section >
+     <div class="container">
+     	<img alt="" src="img/4.jpg" style="width: 100%; border-radius: 25px 25px 25px 25px;">
+     </div>
+    </section>
+    <!-- PHẦN HIỂN THỊ DANH SÁCH TÔM -->
+    <section class="padding-top-20 padding-bottom-80">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>CUA - GHẸ TƯƠI SỐNG</h4>
+          <span>Cua là một món hải sản khá quen thuộc với người miền nam, với những con cua tươi sống, chắc thịt 
+          đến từ hệ thống phân phối King Seafood bạn sẽ có một bữa ăn tuyệt vời.</span> </div>
+        
+        <!-- Popular Item Slide -->
+        <div class="papular-block block-slide"> 
+          
+          <!-- Item -->
+          <div class="item" th:each="item : ${topOrderCua} "> 
+            <!-- Item img -->
+            <div class="item-img">
+	            <img class="img-1" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" >
+	            <img class="img-2" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" > 
+              <!-- Overlay -->
+              <div class="overlay">
+                <div class="position-center-center">
+                  <div class="inn">
+                  <a th:href="@{'/loadImage?imageName='+${item.image}}" data-lighter data-toggle="tooltip" data-placement="top" title="Chi tiết">
+                  	<i class="icon-magnifier"></i>
+                  </a>
+                  <a th:href="@{/addToCart(productId=${item.productId})}" data-toggle="tooltip" data-placement="top" title="Thêm vào Giỏ hàng">
+                  	<i class="icon-basket"></i>
+                  </a>
+                  <a href="#." data-toggle="tooltip" data-placement="top" title="Thêm vào Danh sách yêu thích">
+                  	<i class="icon-heart"></i>
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item Name -->
+            <div class="item-name"> <a th:href="@{/productDetail(id=${item.productId})}">[[${item.name}]]</a>
+            </div>
+            <!-- Price --> 
+            <span class="price">[[${#numbers.formatDecimal(item.price - (item.price * item.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')}]].000<small>VNĐ</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- BANNER -->
+    <section >
+     <div class="container">
+     	<img alt="" src="img/5.jpg" style="width: 100%; border-radius: 25px 25px 25px 25px;">
+     </div>
+    </section>
+    <!-- PHẦN HIỂN THỊ DANH DÁCH CÁ -->
+    <section class="padding-top-20 padding-bottom-80">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>TÔM NGON - GIÁ TỐT</h4>
+          <span>Tôm là một món hải sản khá quen thuộc với người miền nam, với những con tôm tươi sống 
+          đến từ hệ thống phân phối King-Seafood bạn sẽ có một bữa ăn tuyệt vời.</span> </div>
+        
+        <!-- Popular Item Slide -->
+        <div class="papular-block block-slide"> 
+          
+          <!-- Item -->
+          <div class="item" th:each="item : ${topOrderTom} "> 
+            <!-- Item img -->
+            <div class="item-img">
+	            <img class="img-1" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" >
+	            <img class="img-2" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" > 
+              <!-- Overlay -->
+              <div class="overlay">
+                <div class="position-center-center">
+                  <div class="inn">
+                  <a th:href="@{'/loadImage?imageName='+${item.image}}" data-lighter data-toggle="tooltip" data-placement="top" title="Chi tiết">
+                  	<i class="icon-magnifier"></i>
+                  </a>
+                  <a th:href="@{/addToCart(productId=${item.productId})}" data-toggle="tooltip" data-placement="top" title="Thêm vào Giỏ hàng">
+                  	<i class="icon-basket"></i>
+                  </a>
+                  <a href="#." data-toggle="tooltip" data-placement="top" title="Thêm vào Danh sách yêu thích">
+                  	<i class="icon-heart"></i>
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item Name -->
+            <div class="item-name"> <a th:href="@{/productDetail(id=${item.productId})}">[[${item.name}]]</a>
+            </div>
+            <!-- Price --> 
+            <span class="price">[[${#numbers.formatDecimal(item.price - (item.price * item.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')}]].000<small>VNĐ</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- BANNER -->
+    <section >
+     <div class="container">
+     	<img alt="" src="img/10.jpg" style="width: 100%; border-radius: 25px 25px 25px 25px;">
+     </div>
+    </section>
+    <!-- PHẦN HIỂN THỊ DANH DÁCH ỐC -->
+    <section class="padding-top-20 padding-bottom-80">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>NGAO - SÒ - ỐC ĐỦ LOẠI</h4>
+          <span>Thành phần dinh dưỡng của ốc có nhiều nhất là canxi
+			Cụ thể, trong 100g ốc người ta tìm thấy: 10,7g protein; 1,2g lipit; 
+			3,8g cacbohydrat; 1.357mg canxi; 191mg photpho; 19,8mg sắt; vitamin B1, B2,
+			 A… Một số nghiên cứu chỉ ra, hàm lượng canxi trong ốc đồng cao hơn nhiều lần so với sữa bò.</span> </div>
+        
+        <!-- Popular Item Slide -->
+        <div class="papular-block block-slide"> 
+          
+          <!-- Item -->
+          <div class="item" th:each="item : ${topOrderOc} "> 
+            <!-- Item img -->
+            <div class="item-img">
+	            <img class="img-1" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" >
+	            <img class="img-2" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" > 
+              <!-- Overlay -->
+              <div class="overlay">
+                <div class="position-center-center">
+                  <div class="inn">
+                  <a th:href="@{'/loadImage?imageName='+${item.image}}" data-lighter data-toggle="tooltip" data-placement="top" title="Chi tiết">
+                  	<i class="icon-magnifier"></i>
+                  </a>
+                  <a th:href="@{/addToCart(productId=${item.productId})}" data-toggle="tooltip" data-placement="top" title="Thêm vào Giỏ hàng">
+                  	<i class="icon-basket"></i>
+                  </a>
+                  <a href="#." data-toggle="tooltip" data-placement="top" title="Thêm vào Danh sách yêu thích">
+                  	<i class="icon-heart"></i>
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item Name -->
+            <div class="item-name"> <a th:href="@{/productDetail(id=${item.productId})}">[[${item.name}]]</a>
+            </div>
+            <!-- Price --> 
+            <span class="price">[[${#numbers.formatDecimal(item.price - (item.price * item.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')}]].000<small>VNĐ</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- BANNER -->
+    <section >
+     <div class="container">
+     	<img alt="" src="img/7.jpg" style="width: 100%; border-radius: 25px 25px 25px 25px;">
+     </div>
+    </section>
+    <!-- PHẦN HIỂN THỊ DANH DÁCH ỐC -->
+    <section class="padding-top-20 padding-bottom-80">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>CÁ TƯƠI NGON - DINH DƯỠNG</h4>
+          <span>Cá cung cấp đủ acid amin, muối khoáng và các nhóm vi lượng cần thiết. Ăn cá thường xuyên,
+           cơ thể có thể hấp thu một lượng Vitamin A và D bổ sung, tăng thêm omega 3 và 6 cho cơ thể. 
+           Số lượng protein ổn định trong cá cũng giúp cơ thể hấp thu thường xuyên mà không lo tăng cân, 
+           béo phì bởi lượng mỡ, đạm không quá nhiều.</span> </div>
+        
+        <!-- Popular Item Slide -->
+        <div class="papular-block block-slide"> 
+          
+          <!-- Item -->
+          <div class="item" th:each="item : ${topOrderCa} "> 
+            <!-- Item img -->
+            <div class="item-img">
+	            <img class="img-1" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" >
+	            <img class="img-2" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" > 
+              <!-- Overlay -->
+              <div class="overlay">
+                <div class="position-center-center">
+                  <div class="inn">
+                  <a th:href="@{'/loadImage?imageName='+${item.image}}" data-lighter data-toggle="tooltip" data-placement="top" title="Chi tiết">
+                  	<i class="icon-magnifier"></i>
+                  </a>
+                  <a th:href="@{/addToCart(productId=${item.productId})}" data-toggle="tooltip" data-placement="top" title="Thêm vào Giỏ hàng">
+                  	<i class="icon-basket"></i>
+                  </a>
+                  <a href="#." data-toggle="tooltip" data-placement="top" title="Thêm vào Danh sách yêu thích">
+                  	<i class="icon-heart"></i>
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item Name -->
+            <div class="item-name"> <a th:href="@{/productDetail(id=${item.productId})}">[[${item.name}]]</a>
+            </div>
+            <!-- Price --> 
+            <span class="price">[[${#numbers.formatDecimal(item.price - (item.price * item.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')}]].000<small>VNĐ</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About -->
+    <section class="small-about padding-top-150 padding-bottom-150">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>VỀ CHÚNG TÔI</h4>
+          <p>Chúng tôi tự hào mình là nhà cung cấp hải sản tươi sống chất lượng đến cho mọi nhà, với phương châm chất lượng là danh dự đến từ doanh nghiệp 
+          chúng tôi tự tin sẽ làm hài lòng quý khách hàng một cách tận tình nhất </p>
+        </div>
+        
+        <!-- Social Icons -->
+        <ul class="social_icons">
+          <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+          <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+          <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+          <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+          <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="news-letter padding-top-150 padding-bottom-150">
+      <div class="container">
+        <div class="heading light-head text-center margin-bottom-30">
+          <h4>Liên hệ</h4>
+          <span>Bằng cách điền email của bạn vào đây chúng tôi sẽ liên hệ qua mail nhanh nhất có thể. Trân trọng! </span> </div>
+        <form>
+          <input type="email" placeholder="Nhập địa chỉ email..." required>
+          <button type="submit">Gửi</button>
+        </form>
+      </div>
+    </section>
+  </div>
+  
+  <!--======= FOOTER =========-->
+  <footer th:replace="~{/site/fragments/footer :: footer}"></footer>
+  
+  <!--======= RIGHTS =========--> 
+  
+</div>
+<script src="js/jquery-1.11.3.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/own-menu.js"></script> 
+<script src="js/jquery.lighter.js"></script> 
+<script src="js/owl.carousel.min.js"></script> 
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script> 
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script> 
+<script src="js/main.js"></script> 
+<script src="js/main.js"></script>
+</body>
+</html>

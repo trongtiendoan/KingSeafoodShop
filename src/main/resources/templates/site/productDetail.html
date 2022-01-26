@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>KING SEAFOOD - CHI TIẾT SẢN PHẨM</title>
+
+<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/ionicons.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<!-- JavaScripts -->
+<script src="js/modernizr.js"></script>
+
+<!-- Online Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  <!-- header -->
+  <header th:replace="~{/site/fragments/header :: header}"></header>
+  
+  <!--======= SUB BANNER =========-->
+  <section class="sub-bnr" data-stellar-background-ratio="0.5">
+    <div class="position-center-center">
+      <div class="container">
+        <h4>CHI TIẾT SẢN PHẨM</h4>
+        <p>Hệ thống phân phối hải sản chất lượng hàng đầu khu vực miền nam, với phương châm chất lượng là danh dự doanh nghiệp
+        chúng tôi sẽ làm quý khách hài lòng khi đến với chúng tôi</p>
+        <ol class="breadcrumb">
+          <li><a th:href="@{/}">Trang chủ</a></li>
+          <li class="active">Chi tiết sản phẩm</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!-- Popular Products -->
+    <section class="padding-top-100 padding-bottom-100">
+      <div class="container"> 
+        
+        <!-- SHOP DETAIL -->
+        <div class="shop-detail">
+          <div class="row"> 
+            
+            <!-- Popular Images Slider -->
+            <div class="col-md-7"> 
+              
+              <!-- Images Slider -->
+              <div class="images-slider">
+                <ul class="slides" style="width: 100%; padding-left: 13%; height: 0px">
+                  <li th:data-thumb="@{'/loadImage?imageName='+${product.image}}"> 
+                  <img class="img-responsive" th:src="@{'/loadImage?imageName='+${product.image}}"  alt="" style="width: 500px; height: 500px"> 
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+            
+            <!-- COntent -->
+            <div class="col-md-5">
+              <h4>[[${product.name}]]</h4>
+              <span class="price">[[${#numbers.formatDecimal(product.price - (product.price * product.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')}]].000<small>VNĐ</small></span> 
+              
+              <!-- Sale Tags -->
+              <div class="on-sale"> <span>GIẢM</span> [[${#numbers.formatDecimal(product.discount, 1, 'DEFAULT', 0, 'DEFAULT')} + '%']]</div>
+              <ul class="item-owner">
+                <li>Loại sản phẩm :<span> [[${product.category.categoryName}]]</span></li>
+                <li>Nhà phân phối :<span> [[${product.brand.brandName}]]</span></li>
+              </ul>
+              
+              <!-- Item Detail -->
+              <p style="font-family: 'Montserrat', sans-serif;">[[${product.description}]]</p>
+              
+              <!-- Short By -->
+              <div class="some-info">
+                <ul class="row margin-top-30">
+
+                  <!-- ADD TO CART -->
+                  <li class="col-xs-7"> <a th:href="@{/addToCart(productId=${product.productId})}" class="btn">THÊM VÀO GIỎ HÀNG</a> </li>
+                  
+                  <!-- LIKE -->
+                  <li class="col-xs-5"> <a href="#." class="like-us"><i class="icon-heart"></i></a> </li>
+                </ul>
+                
+                <!-- INFOMATION -->
+                <div class="inner-info">
+                  <h6>CHIA SẺ ĐẾN</h6>
+                  
+                  <!-- Social Icons -->
+                  <ul class="social_icons">
+                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+                    <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+                    <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+                    <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!--======= PRODUCT DESCRIPTION =========-->
+        <div class="item-decribe"> 
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
+            <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">MÔ TẢ</a></li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content animate fadeInUp" data-wow-delay="0.4s"> 
+            <!-- DESCRIPTION -->
+            <div role="tabpanel" class="tab-pane fade in active" id="descr">
+              <p style="font-family: 'Montserrat', sans-serif;">[[${product.description}]]. <br>
+              </p>
+            </div>
+            <!-- TAGS -->
+            <div role="tabpanel" class="tab-pane fade" id="tags"> </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Popular Products -->
+    <section class="light-gray-bg padding-top-150 padding-bottom-150">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>SẢN PHẨM LIÊN QUAN</h4>
+          <span>Những sản phẩm cùng loại</span> </div>
+        
+        <!-- Popular Item Slide -->
+        <div class="papular-block block-slide"> 
+          
+          <!-- Item -->
+          <div class="item" th:each="item : ${productByCategory}"> 
+            <!-- Item img -->
+            <div class="item-img">
+	            <img class="img-1" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" >
+	            <img class="img-2" th:src="@{'/loadImage?imageName='+${item.image}}" alt="" > 
+              <!-- Overlay -->
+              <div class="overlay">
+                <div class="position-center-center">
+                  <div class="inn">
+                  <a th:href="@{'/loadImage?imageName='+${item.image}}" data-lighter data-toggle="tooltip" data-placement="top" title="Chi tiết">
+                  	<i class="icon-magnifier"></i>
+                  </a>
+                  <a href="#." data-toggle="tooltip" data-placement="top" title="Thêm vào Giỏ hàng">
+                  	<i class="icon-basket"></i>
+                  </a>
+                  <a href="#." data-toggle="tooltip" data-placement="top" title="Thêm vào Danh sách ước">
+                  	<i class="icon-heart"></i>
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item Name -->
+            <div class="item-name"> <a th:href="@{/productDetail(id=${item.productId})}">[[${item.name}]]</a>
+            </div>
+            <!-- Price --> 
+            <span class="price">[[${#numbers.formatDecimal(item.price - (item.price * item.discount/100), 1, 'DEFAULT', 0, 'DEFAULT')}]].000<small>VNĐ</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About -->
+    <section class="small-about padding-top-150 padding-bottom-150">
+      <div class="container"> 
+        
+        <!-- Main Heading -->
+        <div class="heading text-center">
+          <h4>VỀ CHÚNG TÔI</h4>
+          <p>Chúng tôi tự hào mình là nhà cung cấp hải sản tươi sống chất lượng đến cho mọi nhà, với phương châm chất lượng là danh dự đến từ doanh nghiệp 
+          chúng tôi tự tin sẽ làm hài lòng quý khách hàng một cách tận tình nhất </p>
+        </div>
+        
+        <!-- Social Icons -->
+        <ul class="social_icons">
+          <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+          <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+          <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+          <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+          <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- News Letter -->
+    <section class="news-letter padding-top-150 padding-bottom-150">
+      <div class="container">
+        <div class="heading light-head text-center margin-bottom-30">
+          <h4>Liên hệ</h4>
+          <span>Bằng cách điền email của bạn vào đây chúng tôi sẽ liên hệ qua mail nhanh nhất có thể. Trân trọng! </span> </div>
+        <form>
+          <input type="email" placeholder="Nhập địa chỉ email..." required>
+          <button type="submit">Gửi</button>
+        </form>
+      </div>
+    </section>
+  </div>
+  
+  <!--======= FOOTER =========-->
+  <footer th:replace="~{/site/fragments/footer :: footer}"></footer>
+  
+  <!--======= RIGHTS =========--> 
+  
+</div>
+<script src="js/jquery-1.11.3.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/own-menu.js"></script> 
+<script src="js/jquery.lighter.js"></script> 
+<script src="js/owl.carousel.min.js"></script> 
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script> 
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script> 
+<script src="js/main.js"></script> 
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="M_Adnan">
+<title>King Seafood - Thông tin khách hàng</title>
+
+<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+<link rel="stylesheet" type="text/css" href="../rs-plugin/css/settings.css" media="screen" />
+
+<!-- Bootstrap Core CSS -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../css/ionicons.min.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
+
+<!-- JavaScripts -->
+<script src="../js/modernizr.js"></script>
+
+<!-- Online Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="position-center-center">
+    <div class="ldr"></div>
+  </div>
+</div>
+
+<!-- Wrap -->
+<div id="wrap"> 
+  
+  <!-- header -->
+  <header th:replace="~{/site/fragments/header :: header}"></header>
+  
+  <!--======= SUB BANNER =========-->
+  <section class="sub-bnr" data-stellar-background-ratio="0.5">
+    <div class="position-center-center">
+      <div class="container">
+        <h4>THÔNG TIN KHÁCH HÀNG</h4>
+        <p>Hệ thống bán hải sản King Seafood</p>
+        <ol class="breadcrumb">
+          <li><a th:href=@{/}>Trang chủ</a></li>
+          <li class="active">Thông tin khách hàng</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Content -->
+  <div id="content"> 
+    
+    <!--======= CONATACT  =========-->
+    <section class="chart-page padding-top-100 padding-bottom-100">
+      <div class="container"> 
+        
+        <!-- Payments Steps -->
+        <div class="shopping-cart"> 
+          
+          <!-- SHOPPING INFORMATION -->
+          <div class="cart-ship-info register">
+            <div class="row"> 
+              
+              <!-- ESTIMATE SHIPPING & TAX -->
+              <div class="col-sm-12">
+                <h6>THÔNG TIN KHÁCH HÀNG</h6>
+                <div class="alert alert-danger col-6" th:if="${error}" th:text="${error}"></div>
+				<div class="alert alert-success col-6" th:if="${message}" th:text="${message}"></div>
+                <form th:action="@{/customer/editProfile}" th:object="${customer}" method="post">
+                  <ul class="row">
+                  
+                   <!-- LAST NAME -->
+                    <li class="col-md-9">
+                      <label> ID ĐĂNG NHẬP
+<input th:field="*{customerId}" type="text" name="customerId" value="" placeholder="username" required="required" th:readonly="readonly">
+                      </label>
+                    </li>
+                    
+                    <!-- FULL NAME -->
+                    <li class="col-md-9">
+                      <label> HỌ VÀ TÊN
+                        <input th:field="*{fullname}" type="text" name="fullname" value="" placeholder="full name" required="required">
+                      </label>
+                    </li>
+
+                     <!-- EMAIL -->
+                    <li class="col-md-9"> 
+                      <label> EMAIL NGƯỜI DÙNG
+                        <input th:field="*{email}" type="email" name="email" value="" placeholder="email" required="required">
+                      </label>
+                    </li>
+
+	
+                    
+                    <!-- SUBMIT -->
+                    <li class="col-md-6">
+                     <!-- <a th:href="@{/customer/editProfile}" style="color: blue">chỉnh sửa thông tin</a>  -->
+                     <a th:href="@{/editProfile/{customerId}}"
+						style="color: blue" data-toggle="tooltip" title="" data-original-title="Chỉnh sửa">
+								<i class="fa fa-edit"></i> Chỉnh sửa thông tin
+					</a>
+                    </li>
+
+                  </ul>
+                </form>
+                <br>
+                <!-- Danh sách khách hàng xác nhận -->
+                <div class="col-12 mt-5">
+				<h5>Danh sách đơn hàng chờ xác nhận:</h5>
+				<br>
+				<h5 class="text-center" th:if="${orders0.totalElements==0}"
+					style="font-size: 13px;">Bạn chưa có đơn hàng nào chờ xác
+					nhận!</h5>
+				<table class="table table-bordered"
+					th:unless="${orders0.totalElements==0}">
+					<thead>
+						<tr class="text-center">
+							<th>STT</th>
+							<th>Mã hoá đơn</th>
+							<th>Tổng tiền</th>
+							<th>Ngày mua</th>
+							<th>Chi tiết</th>
+							<th>Hành động</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="text-center" th:each="item, count : ${orders0}">
+							<th th:text="${count.index + 1}"></th>
+							<th th:text="${item.orderId}"></th>
+							<th
+								th:text="${#numbers.formatDecimal(item.totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}+'.000 VNĐ'"></th>
+							<th th:text="${#dates.format(item.orderDate, 'dd-MM-yyyy')}"></th>
+							<th><a th:href="@{'/customer/detail/'+${item.orderId}}"><span
+									class="fa fa-info-circle">Chi tiết</span></a></th>
+							<th><a style="cursor: pointer;" th:data-id="${item.orderId}"
+								onclick="showConfigModalDialog(this.getAttribute('data-id'))"><span
+									class="fa fa-remove text-danger">Huỷ đơn</span></a></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+				<br>
+				<div class="col-12 mt-5">
+				<h5>Danh sách đơn hàng chờ thanh toán:</h5>
+				<br>
+				<h5 class="text-center" th:if="${orders1.totalElements==0}"
+					style="font-size: 13px;">Bạn chưa có đơn hàng nào chờ thanh
+					toán!</h5>
+				<table class="table table-bordered"
+					th:unless="${orders1.totalElements==0}">
+					<thead>
+						<tr class="text-center">
+							<th>STT</th>
+							<th>Mã hoá đơn</th>
+							<th>Tổng tiền</th>
+							<th>Ngày mua</th>
+							<th>Chi tiết</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="text-center" th:each="item, count : ${orders1}">
+							<th th:text="${count.index + 1}"></th>
+							<th th:text="${item.orderId}"></th>
+							<th
+								th:text="${#numbers.formatDecimal(item.totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}+'.000 VNĐ'"></th>
+							<th th:text="${#dates.format(item.orderDate, 'dd-MM-yyyy')}"></th>
+							<th><a th:href="@{'/customer/detail/'+${item.orderId}}"><span
+									class="fa fa-info-circle">Chi tiết</span></a>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div class="col-12 mt-5 mb-5">
+				<h5>Danh sách đơn hàng đã mua:</h5>
+				<br>
+				<h5 class="text-center" th:if="${orders2.totalElements==0}"
+					style="font-size: 13px;">Bạn chưa thanh toán đơn hàng nào!</h5>
+				<table class="table table-bordered"
+					th:unless="${orders2.totalElements==0}">
+					<thead>
+						<tr class="text-center">
+							<th>STT</th>
+							<th>Mã hoá đơn</th>
+							<th>Tổng tiền</th>
+							<th>Ngày mua</th>
+							<th>Chi tiết</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="text-center" th:each="item, count : ${orders2}"
+							th:if="${item.status!=0}">
+							<th th:text="${count.index + 1}"></th>
+							<th th:text="${item.orderId}"></th>
+							<th
+								th:text="${#numbers.formatDecimal(item.totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}+'.000 VNĐ'"></th>
+							<th th:text="${#dates.format(item.orderDate, 'dd-MM-yyyy')}"></th>
+							<th><a th:href="@{'/customer/detail/'+${item.orderId}}"><span
+									class="fa fa-info-circle">Chi tiết</span></a></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<div class="col-12 mt-5 mb-5">
+				<h5>Danh sách đơn hàng đã huỷ:</h5>
+				<br>
+				<h5 class="text-center" th:if="${orders3.totalElements==0}"
+					style="font-size: 13px;">Bạn không có đơn hàng bị huỷ!</h5>
+				<table class="table table-bordered"
+					th:unless="${orders3.totalElements==0}">
+					<thead>
+						<tr class="text-center">
+							<th>STT</th>
+							<th>Mã hoá đơn</th>
+							<th>Tổng tiền</th>
+							<th>Ngày mua</th>
+							<th>Chi tiết</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="text-center" th:each="item, count : ${orders3}"
+							th:if="${item.status!=0}">
+							<th th:text="${count.index + 1}"></th>
+							<th th:text="${item.orderId}"></th>
+							<th
+								th:text="${#numbers.formatDecimal(item.totalPrice, 1, 'DEFAULT', 0, 'DEFAULT')}+'.000 VNĐ'"></th>
+							<th th:text="${#dates.format(item.orderDate, 'dd-MM-yyyy')}"></th>
+							<th><a th:href="@{'/customer/detail/'+${item.orderId}}"><span
+									class="fa fa-info-circle">Chi tiết</span></a></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!--======= MAP =========-->
+  <script>
+				function showConfigModalDialog(id) {
+					$('#id').text(id);
+					$('#yesOption').attr('href', '/cancel/' + id);
+					$('#configmationId').modal('show');
+				}
+			</script>
+
+			<!-- Modal -->
+			<div class="modal" tabindex="-1" role="dialog" id="configmationId">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Xác nhận</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>
+								Bạn có muốn huỷ đơn hàng có mã "<span id="id"></span>" ?
+							</p>
+						</div>
+						<div class="modal-footer">
+							<a id="yesOption" type="button" class="btn btn-danger">Có</a>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Không</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+    
+    <!-- News Letter -->
+    <section class="news-letter padding-top-150 padding-bottom-150">
+      <div class="container">
+        <div class="heading light-head text-center margin-bottom-30">
+          <h4>Liên hệ</h4>
+<span>Bằng cách điền email của bạn vào đây chúng tôi sẽ liên hệ qua mail nhanh nhất có thể. Trân trọng! </span> </div>
+        <form>
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit">SEND ME</button>
+        </form>
+      </div>
+    </section>
+  </div>
+  
+  <!--======= FOOTER =========-->
+  <footer th:replace="~{/site/fragments/footer :: footer}"></footer>
+</div>
+<script src="../js/jquery-1.11.3.min.js"></script> 
+<script src="../js/bootstrap.min.js"></script> 
+<script src="../js/own-menu.js"></script> 
+<script src="../js/jquery.lighter.js"></script> 
+<script src="../js/owl.carousel.min.js"></script> 
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
+<script type="text/javascript" src="../rs-plugin/js/jquery.tp.t.min.js"></script> 
+<script type="text/javascript" src="../rs-plugin/js/jquery.tp.min.js"></script> 
+<script src="../js/main.js"></script> 
+
+<!-- Begin Map Script --> 
+<script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false'></script> 
+<script type="text/javascript">
+/*==========  Map  ==========*/
+var map;
+function initialize_map() {
+if ($('#map').length) {
+	var myLatLng = new google.maps.LatLng(-37.814199, 144.961560);
+	var mapOptions = {
+		zoom: 17,
+		center: myLatLng,
+		scrollwheel: false,
+		panControl: false,
+		zoomControl: true,
+		scaleControl: false,
+		mapTypeControl: false,
+		streetViewControl: false
+	};
+	map = new google.maps.Map(document.getElementById('map'), mapOptions);
+	var marker = new google.maps.Marker({
+		position: myLatLng,
+		map: map,
+		tittle: 'Envato',
+		icon: './images/map-locator.png'
+	});
+} else {
+	return false;
+}}
+google.maps.event.addDomListener(window, 'load', initialize_map);
+</script>
+</body>
+</html>

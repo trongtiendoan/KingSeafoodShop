@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>KINGSEAFOOD - Admin Dashboard</title>
+<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
+	name='viewport' />
+<link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon" />
+
+<!-- Fonts and icons -->
+<script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+<!-- CSS Files -->
+<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../assets/css/atlantis.min.css">
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link rel="stylesheet" href="../../assets/css/demo.css">
+</head>
+<body>
+	<div class="wrapper">
+	
+		<th:block th:replace="~{admin/fragments/header :: header}"></th:block>
+	
+	<!-- End Header -->
+	
+	<!-- Navbar -->
+	
+	<th:block th:replace="~{admin/fragments/navbar :: navbar}"></th:block>
+	
+
+		<!-- End Navbar -->
+		<div class="main-panel" style="margin-top: 50px">
+		<div class="content">
+			<div class="page-inner">
+				<div class="page-header">
+					<h4 class="page-title">Quản Lý Đơn Hàng</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home">
+							<a href="#">
+								<i class="flaticon-home"></i>
+							</a>
+						</li>
+						<li class="separator">
+							<i class="flaticon-right-arrow"></i>
+						</li>
+						<li class="nav-item">
+							<a th:href="@{/admin/home}">Trang chủ</a>
+						</li>
+						<li class="separator">
+							<i class="flaticon-right-arrow"></i>
+						</li>
+						<li class="nav-item">
+							<a href="#">Quản Lý Đơn Hàng</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="d-flex align-items-center">
+								<h4 class="card-title" style="text-decoration: underline;">Quản
+									Lý Đơn Hàng</h4>
+									<a th:href="@{/admin/orders/export}" style="padding-left: 20px;">
+										<h4 class="card-title" style="text-decoration: underline; color: green;">Export To Excel</h4>
+									</a>
+								<div class="col-3 offset-2 ml-auto">
+									<form th:action="@{/admin/orders/search}" method="get"
+										class="input-group">
+										<input type="number" class="form-control"
+											placeholder="Mã đơn hàng" name="id"
+											aria-label="Recipient's username" th:value="${id}"
+											aria-describedby="basic-addon2">
+										<div class="input-group-append">
+											<button style="font-size: 13px;"
+												class="btn btn-outline-secondary">
+												<span class="fa fa-search"></span>
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				
+				<form th:action="@{/admin/orders/page}" class="col-2 mt-4"
+					method="get">
+					<input hidden="hidden" name="page" value="0" /> <input
+						hidden="hidden" name="size" th:value="${orders.size}" /> <select
+						class="custom-select" onchange="this.form.submit()" name="filter"
+						style="width: 85%">
+						<option th:selected="${filter==0}" value="0">Mặc định</option>
+						<option th:selected="${filter==1}" value="1">Chưa xác
+							nhận</option>
+						<option th:selected="${filter==2}" value="2">Đang giao
+							hàng</option>
+						<option th:selected="${filter==3}" value="3">Đã giao
+							hàng</option>
+						<option th:selected="${filter==4}" value="4">Đã huỷ</option>
+						<option th:selected="${filter==5}" value="5">Tổng tiền
+							lớn nhất</option>
+					</select>
+				</form>
+				<div class="row mt-5" th:if="${orders.totalElements==0}">
+					<div class="col-12">
+						<h1 class="text-center">Không tìm thấy đơn hàng phù hơp</h1>
+					</div>
+				</div>
+				<div class="table-responsive">
+				<table id="add-row" class="display table table-striped table-hover" 
+					th:unless="${orders.totalElements==0}">
+					<thead>
+						<tr class="text-center">
+							<th width="15%">Mã đơn hàng</th>
+							<th>Tên khách hàng</th>
+							<th>Số điện thoại</th>
+							<th>Ngày đặt</th>
+							<th>Tổng tiền</th>
+							<th width="10%">Chi tiết</th>
+							<th>Hành động</th>
+						</tr>
+					</thead>
+					<tbody >
+						<tr th:each="item : ${orders}" class="text-center">
+							<td class="text-center" th:text="${item.orderId}"></td>
+							<td th:text="${item.receiver}"></td>
+							<td th:text="${item.phone}"></td>
+							<td class="text-center"
+								th:text="${#dates.format(item.orderDate, 'dd-MM-yyyy')}"></td>
+							<td class="text-center" th:text="${item.totalPrice}+' VNĐ'"></td>
+							<td class="text-center"><a
+								th:href="@{'/admin/orders/detail/'+${item.orderId}}"><i
+									class="fa fa-info-circle">Chi tiết</i></a></td>
+							<td class="text-center">
+								<div th:if="${item.status==0}">
+									<a style="cursor: pointer; color: green;"
+										th:data-id="${item.orderId}"
+										onclick="showConfigConfirmModalDialog(this.getAttribute('data-id'))"><i
+										class="fa fa-check-circle">Xác nhận</i></a> | <a
+										style="cursor: pointer;" th:data-id="${item.orderId}"
+										onclick="showConfigCancelModalDialog(this.getAttribute('data-id'))"><i
+										class="fa fa-remove text-danger">Huỷ đơn</i></a>
+								</div>
+								<div th:if="${item.status==1}">
+									<a style="cursor: pointer; color: #007bff;"
+										th:data-id="${item.orderId}"
+										onclick="showConfigDeliveredModalDialog(this.getAttribute('data-id'))"><i
+										class="fa fa-check-circle">Xác nhận đã giao</i></a>
+								</div>
+								<div th:if="${item.status==2}">
+									<i class="fa fa-check-circle">Đã thanh toán</i>
+								</div>
+								<div th:if="${item.status==3}">
+									<i class="fa fa-remove">Đã huỷ</i>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Huỷ đơn -->
+				<script>
+					function showConfigCancelModalDialog(id) {
+						$('#idCancel').text(id);
+						$('#yesOptionCanCel').attr('href',
+								'/admin/orders/cancel/' + id);
+						$('#configmationCancelId').modal('show');
+					}
+				</script>
+
+				<!-- Modal -->
+				<div class="modal" id="configmationCancelId">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Xác nhận</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>
+									Bạn có muốn huỷ đơn hàng có mã "<span id="idCancel"></span>" ?
+								</p>
+							</div>
+							<div class="modal-footer">
+								<a id="yesOptionCanCel" type="button" class="btn btn-danger">Có</a>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Không</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Xác nhận đơn -->
+				<script>
+					function showConfigConfirmModalDialog(id) {
+						$('#idConfirm').text(id);
+						$('#yesOptionConfirm').attr('href',
+								'/admin/orders/confirm/' + id);
+						$('#configmationConfirmId').modal('show');
+					}
+				</script>
+
+				<!-- Modal -->
+				<div class="modal" id="configmationConfirmId">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Xác nhận</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>
+									Bạn có muốn xác nhận đơn hàng có mã "<span id="idConfirm"></span>"
+									?
+								</p>
+							</div>
+							<div class="modal-footer">
+								<a id="yesOptionConfirm" type="button" class="btn btn-primary">Có</a>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Không</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Xác nhận đã giao -->
+				<script>
+					function showConfigDeliveredModalDialog(id) {
+						$('#idDelivered').text(id);
+						$('#yesOptionDelivered').attr('href',
+								'/admin/orders/delivered/' + id);
+						$('#configmationDeliveredId').modal('show');
+					}
+				</script>
+				<!-- Modal -->
+				<div class="modal" id="configmationDeliveredId">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Xác nhận</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>
+									Bạn có muốn xác nhận đơn hàng có mã "<span id="idDelivered"></span>"
+									?
+								</p>
+							</div>
+							<div class="modal-footer">
+								<a id="yesOptionDelivered" type="button" class="btn btn-primary">Có</a>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Không</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<nav aria-label="Page navigation example form-inline"
+					th:if="${orders.totalElements>0}">
+					<ul class="pagination float-right ml-4">
+						<li class="page-item"><a class="page-link"
+							th:href="@{'/admin/orders/page?page=0&size='+${orders.size}+'&filter='+${filter==null?0:filter}}"><i
+								class="fa fa-step-backward"></i></a></li>
+						<li class="page-item"><a class="page-link"
+							th:href="@{'/admin/orders/page?page='+${orders.number-1<0?0:orders.number-1}+'&size='+${orders.size}+'&filter='+${filter==null?0:filter}}"><i
+								class="fa fa-chevron-left"></i></a></li>
+						<li class="page-item"><a class="page-link"
+							th:href="@{'/admin/orders/page?page='+${orders.number+1>orders.totalPages-1?orders.totalPages-1:orders.number+1}+'&size='+${orders.size}+'&filter='+${filter==null?0:filter}}"><i
+								class="fa fa-chevron-right"></i></a></li>
+						<li class="page-item"><a class="page-link"
+							th:href="@{'/admin/orders/page?page='+${orders.totalPages-1}+'&size='+${orders.size}+'&filter='+${filter==null?0:filter}}"><i
+								class="fa fa-step-forward"></i></a></li>
+					</ul>
+
+					<form th:action="@{/admin/orders/page}" method="get"
+						class="float-right p-2" style="font-weight: 350;">
+						<input type="text" hidden="hidden" name="page" value="0" /> <input
+							type="text" hidden="hidden" name="filter" th:value="${filter}" />
+						<div class="form-inline">
+							<label>Hiển thị: </label> <select name="size"
+								style="border: none; box-shadow: 0 0 1px gray; width: 50px; border-radius: 3px;"
+								onchange="this.form.submit()">
+								<option th:selected="${orders.size == 5}" value="5">5</option>
+								<option th:selected="${orders.size == 10}" value="10">10</option>
+								<option th:selected="${orders.size == 15}" value="15">15</option>
+							</select> <label> mục</label> <small class="ml-4 p-1">[[${orders.number*orders.size+1}]]-[[${(orders.number*orders.size+orders.size
+								> orders.totalElements) ? orders.totalElements :
+								orders.number*orders.size+orders.size}]] trong
+								[[${orders.totalElements}]] mục</small>
+						</div>
+					</form>
+				</nav>
+			</div>
+			</div>
+		</div>
+		</div>
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<ul class="nav">
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+								King-Seafood
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+								Help
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">
+								Licenses
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="copyright ml-auto">
+					2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="#">King-Seafood</a>
+				</div>				
+			</div>
+		</footer>
+		</div>
+		</div>
+		<script src="../../assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../../assets/js/core/popper.min.js"></script>
+	<script src="../../assets/js/core/bootstrap.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	
+	<!-- jQuery Scrollbar -->
+	<script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Datatables -->
+	<script src="../../assets/js/plugin/datatables/datatables.min.js"></script>
+	<!-- Atlantis JS -->
+	<script src="../../assets/js/atlantis.min.js"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="../../assets/js/setting-demo2.js"></script>
+
+</html>
